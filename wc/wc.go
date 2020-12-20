@@ -45,5 +45,25 @@ func wc(opts Options, file string) ([]byte, error) {
 }
 
 func genHeader(opts Options) []byte {
-	return []byte("  Lines  Words  Bytes\n")
+	if !opts.IsHeader {
+		return nil
+	}
+
+	if !opts.IsBytes && !opts.IsChars && !opts.IsLines {
+		return []byte("  Lines  Words  Bytes\n")
+	}
+
+	buf := []byte{}
+	if opts.IsLines {
+		buf = append(buf, []byte("  Lines")...)
+	}
+	if opts.IsWords {
+		buf = append(buf, []byte("  Words")...)
+	}
+	if opts.IsBytes {
+		buf = append(buf, []byte("  Bytes")...)
+	}
+	buf = append(buf, []byte("\n")...)
+
+	return buf
 }
