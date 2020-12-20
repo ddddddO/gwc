@@ -1,0 +1,8 @@
+name: ci
+on: [push]
+jobs:
+  unit-test-gwc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: make test
