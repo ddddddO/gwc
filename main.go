@@ -34,7 +34,11 @@ func main() {
 		IsWords:         isWords,
 		IsMaxLineLength: isMaxLineLength,
 	}
-	files := []string{"a", "b"}
+
+	files := flag.Args()
+	if len(files) == 0 {
+		os.Exit(1)
+	}
 
 	if err := wc.Wc(opts, files); err != nil {
 		fmt.Println(err)
