@@ -60,6 +60,9 @@ func genHeader(opts Options) []byte {
 	if opts.IsWords {
 		buf = append(buf, []byte("  Words")...)
 	}
+	if opts.IsChars {
+		buf = append(buf, []byte("  Chars")...)
+	}
 	if opts.IsBytes {
 		buf = append(buf, []byte("  Bytes")...)
 	}
